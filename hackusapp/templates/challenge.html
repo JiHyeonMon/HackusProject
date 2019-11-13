@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+    /* The Modal (background) */
+    .modal {
+              display: none; /* Hidden by default */
+              position: fixed; /* Stay in place */
+              z-index: 1; /* Sit on top */
+              left: 0;
+              top: 0;
+              width: 100%; /* Full width */
+              height: 100%; /* Full height */
+              overflow: auto; /* Enable scroll if needed */
+              background-color: rgb(0,0,0); /* Fallback color */
+              background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+          }
+      
+          /* Modal Content/Box */
+          .modal-content {
+              background-color: #fefefe;
+              margin: 15% auto; /* 15% from the top and centered */
+              padding: 20px;
+              border: 1px solid #888;
+              width: 50%; /* Could be more or less, depending on screen size */                          
+          }
+          /* The Close Button */
+          .modal-close {
+              color: #aaa;
+              float: right;
+              font-size: 28px;
+              font-weight: bold;
+          }
+          .modal-close:hover,
+          .modal-close:focus {
+              color: black;
+              text-decoration: none;
+              cursor: pointer;
+          }
+  </style>
+
+여기는 문제페이지<br>
+<br><br>
+<h1>WEB</h1>
+<br>
+
+{% for challenge in challenge.all %}
+        {% if challenge.field == "Web" %}
+
+            <button class = "challenge-modal-open" data-modal = "{{challenge.id}}">{{challenge.title}}</button>            
+            <div class="modal" id = "{{challenge.id}}">
+                <div class = "modal-content">
+                    <div class="modal-header">
+                        <div class = "modal-body">
+                          <p>{{challenge.title}}</p> 
+                          <p>{{challenge.body}}</p>
+                            flag : <input type="text" id="{{challenge.flag}}" value="">
+                            <input type="submit" value="정답" onclick="check('{{challenge.flag}}', '{{challenge.score}}')">
+
+                        </div>
+                        <div class = "modal-footer">
+                            <button class = "link modal-close">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <button class = "writeup-modal-open" data-modal = "{{writeup.challenge}}">{{challenge.title}}writeup</button>            
+            <div class="modal" id = "{{writeup.id}}">
+                <div class = "modal-content">
+                    <div class="modal-header">
+                        <div class = "modal-body">
+
+                            이것은 writeup 입니다.
+                        </div>
+                        <div class = "modal-footer">
+                            <button class = "link modal-close">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+{% endfor %}
+
+
+
+<br><br><br>
+<h1>PWNABLE</h1>
+<br>
+
+{% for challenge in challenge.all %}
+        {% if challenge.field == "Pwnable" %}
+            <button class = "modal-open" data-modal = "{{challenge.id}}">{{challenge.title}}</button>
+            
+            <div class="modal" id = "{{challenge.id}}">
+                <div class = "modal-content">
+                    <div class="modal-header">
+                        <div class = "modal-body">
+                            <p>{{challenge.title}}</p> 
+                            <p>{{challenge.body}}</p>
+                            flag : <input type="text" id="{{challenge.flag}}" value="">
+                            <input type="submit" value="정답" onclick="check('{{challenge.flag}}', '{{challenge.score}}')">
+                        </div>
+                        <div class = "modal-footer">
+                            <button class = "link modal-close">close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+{% endfor %}
+
+<script>
+
+var modalBtn = document.querySelectorAll(".challenge-modal-open");
+var writeup = document.querySelectorAll(".writeup-modal-open")
+
+modalBtn.forEach(function(btn) {
+    btn.onclick = function() {
+        var ChallengeModal = btn.getAttribute("data-modal");
+        document.getElementById(ChallengeModal).style.display = "block"
+        
+    };
+});
+
+writeup.forEach(function(btn) {
+    btn.onclick = function() {
+        var WriteupModal = btn.getAttribute("data-modal");
+        document.getElementById(WriteupModal).style.display = "block"
+        
+    };
+});
+
+var closeBtn = document.querySelectorAll(".modal-close");
+
+closeBtn.forEach(function(btn){
+    btn.onclick = function(){
+        var modal = (btn.closest(".modal").style.display = "none");
+    };
+});
+
+window.onclick = function(e){
+    if(e.target.className == "modal") {
+        e.target.style.display = "none";
+    }
+};
+    
+</script>
+
+<script>
+
+function check(flag, score) {
+    var user_flag = document.getElementById(flag).value;
+
+    if(user_flag == flag ){
+        alert("correct"+" 글쓰니: "+ user_flag+" 정답: "+ flag + " 점수는 " + score);
+        document.getElementById('answer').value = "";
+    }else{
+        alert("fail"+" 글쓰니: "+ user_flag+" 정답: "+ flag);
+        document.getElementById('answer').value = "";
+    }  
+}
+</script>
+
+{% endblock %}
+ 

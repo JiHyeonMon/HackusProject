@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+    <html>
+         {% load staticfiles %}
+            <head>
+                <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+                <style>
+                    .content{
+                        margin-top: 6%;
+                        margin-bottom: 10%;
+                        margin-left: 27%;
+                        margin-right: 27%;
+                    }
+                    .signup_form{
+                        display: block;
+                        width: 565px;
+                        height: 900px;
+                        border-radius: 10px;
+                        padding-left: 9%;
+                        padding-right: 7%;
+                        padding-top: 3%;
+                        padding-bottom: 3%;
+                    }
+                    .category{
+                        float: left;
+                        font-size: 22px;
+                        font-weight: bold;
+                        color: #575757;
+                        margin-top: 12px;
+                        line-height: 0px;
+                    }
+                    .inputs{
+                        margin-left: 20%;
+                        float: left;
+                    }
+                    .box{
+                        height: 50px;
+                        width: 310px;
+                        background-color: #e6e6e6;
+                        border: none;
+                        border-radius: 5px;
+                    }
+                    .box2{
+                        height: 50px;
+                        width: 134px;
+                        background-color: #e6e6e6;
+                        border: none;
+                        border-radius: 5px;
+                    }
+                    .complete{
+                        margin-left: 240px;
+                        margin-top: 10%;
+                        height:60px;
+                        width:180px;
+                        background-color: #f6b14f;
+                        font-size:22px;
+                        border-radius: 12px;
+                    }
+                    .complete:hover{
+                        color:white;
+                    }
+                </style>
+            </head>
+
+
+            <body scroll=auto style="overflow-x:hidden">
+                <div class="content">
+                    <h1>&nbsp;회원가입</h1></br>
+                    <form method = "POST" action = "{% url 'signup' %}">
+                        {% csrf_token %}
+                        <div class="signup_form" style="border:1px solid #9fa0a0;">
+                            <h2 style="color: #f6b14f; font-size: 27px;">필수 정보</h2>
+                                <div class="category">
+                                        <p style="line-height: 30px;">아이디</p>
+                                        <br>
+                                        <p style="margin-top: 54px;">비밀번호</p>
+                                        <br>
+                                        <p style="margin-top: 50px;">비밀번호 확인</p>
+                                        <br>
+                                        <p style="margin-top: 50px;">이름</p>
+                                        <br>
+                                        <p style="margin-top: 50px;">닉네임</p>
+                                        <br>
+                                        <p style="margin-top: 50px;">이메일</p>
+                                        <br>
+                                </div>
+                                <div class="inputs">
+                                        <input class="box" name = "id" type="text" style="margin-top:20px; padding-left: 10px; font-size: 18px" placeholder="아이디 입력"><br>
+                                        <div style="color: red; width: 320px; padding: 5px;">* 이미 사용 중인 아이디입니다.</div>
+                                        <input class="box" name = "password1" type="password" style="margin-top:10px; margin-bottom: 20px; padding-left: 10px; font-size: 18px" placeholder="비밀번호 입력"><br>
+                                        <input class="box" name = "password2" type="password" style="margin-bottom: 20px; padding-left: 10px; font-size: 18px" placeholder="비밀번호 입력(확인)"><br>
+                                        <input class="box" name = "name" type ="text" style="margin-bottom: 20px; padding-left: 10px; font-size: 18px" placeholder="이름 입력"><br>
+                                        <input class="box" name = "nickname" type ="text" style="margin-bottom: 20px; padding-left: 10px; font-size: 18px" placeholder="닉네임 입력"><br>
+                                        <input class="box2" name = "email" style="padding-left: 10px; font-size: 18px" type ="email" placeholder="이메일 입력">
+                                        <span style="margin-left: 5px; margin-right: 5px;">@</span>
+                                        <input class="box2" name = "email" style="padding-left: 10px; font-size: 18px" list="domains" placeholder="직접 입력">
+                                        <datalist id="domains">
+                                                <option value="naver.com">
+                                                <option value="daum.net">
+                                                <option value="gmail.com">
+                                                <option value="hanmail.net">
+                                        </datalist>
+                                        <br>
+                                </div>
+                                <hr style="margin-top: 550px; margin-bottom: 50px;">  
+                                <h2 style="color: #18b15c; font-size: 27px;">관심 분야 및 자가 평가</h2>                            
+                            </br></br>
+                        </div>
+                        <button class="complete" type = "submit">가입 완료</button>
+                    </form>
+                </div>
+            </body>
+
+            <footer>
+                    <hr style="margin-top:10%; margin-left: 13%; margin-right: 13%">
+                    <p style="text-align: center">Copyrightⓒ Team G0328 All Rights Reserved.</p>
+            </footer>
+    </html>
+{% endblock %}

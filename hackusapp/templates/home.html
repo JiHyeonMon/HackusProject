@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+        {% load staticfiles %}
+    <head>
+            <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .content{
+            margin-top: 6%;
+            margin-bottom: 10%;
+            margin-left: 13%;
+            margin-right: 13%;
+        }
+        .title{
+            font-size: 43px;
+            line-height: 60px;
+        }
+        #간격조절
+        .empty{
+            line-height: 15px;
+        }
+        .sub{
+            margin-left: 3px;
+            font-size: 18px;
+            line-height: 30px;
+        }
+        .category{
+            display: block;
+            width: 100%;
+            height: 100px;
+            text-align: center;
+            background: #f6b14f;
+            border-radius: 20px;
+            font-size: 160%;
+        }
+        .btn{
+            display: block;
+            width: 25px;
+            height: 25px;
+            float: right;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 25%;
+            font-size: 30px;
+        }
+        .btn:hover, .link:hover{
+            color: gray;
+        }
+        
+    </style>
+    </head>
+
+    <body scroll=auto style="overflow-x:hidden">
+        <div class="content">
+            <div class="title"><b>누구나 쉽게 배우는</br>해킹 원리</b></div>
+            <div class="empty">&nbsp;</div>
+            <div class="sub">비전공자도 
+                <span style="color: #18b15c">초보자</span>도 쉽고 빠르게
+                </br><span style="color: #18b15c">Write-Up</span>을 통한 복습
+                </br>게시판을 통한 Write-Up <span style="color: #18b15c">공유</span>와 <span style="color: #18b15c">소통</span></div>
+            </br></br></br>
+
+
+            <div style="float: left; width: 56%; height: 230px;">
+                    <div style="float: left; width: 18%; height: 100px;">
+                        <div class="category"><b style="line-height: 100px">WEB</b></div>
+                    </div>
+                    <div style="float: left; width: 5%; height: 100px;"></div>
+                    <div style="float: none; width: 90%; height: 100px; padding-top:25px; line-height: 27px;">
+                        <a href="{% url 'challenge' %}" style="text-decoration: none; color: black;"><span class="link" style="font-size: 120%;"><b>웹 취약점 문제 풀러가기</b></span></a>
+                        </br><span style="font-size: 100%;">SQL Injection / XSS / 쿠키변조 / URL 파라미터</span>
+                    </div>
+
+                <div style="height: 10px;">&nbsp;</div>
+                    <div style="float: left; width: 18%; height: 100px;">
+                        <div class="category"><b style="line-height: 100px">PWN</b></div>
+                    </div>
+                    <div style="float: left; width: 5%; height: 100px;"></div>
+                    <div style="float: none; width: 90%; height: 100px; padding-top:25px; line-height: 27px;">
+                        <a href="{% url 'challenge' %}" style="text-decoration: none; color: black;"><span class="link" style="font-size: 120%;"><b>시스템 취약점 문제 풀러가기</b></span></a>
+                        </br><span style="font-size: 100%;">Buffer Over Flow / FSB / RTL Chaining / ROP</span>
+                    </div>
+            </div>
+
+                <div style="float: left; width: 42%; height: 250px;">
+                    <span style="font-size: 25px;"><b>Open</b>&nbsp;</span>
+                    <span style="font-size: 18px;">Write-Up</span>
+                    <a href="{% url 'writeupboard' %}" style="color: black"><div class="btn"><b>+</div></b></a></br>
+                    <hr style="margin-bottom: 15px;">
+                    <h style="line-height: 25px; font-size: 100%;">
+                    [WEB-05] SQL Injection 풀이했어요~ </br>
+                    [PWN-02] 이거 이렇게 푸는거 맞겠죠..? 맞으면 좋아요 눌러주세요!</br>
+                    [PWN-03] 시스템 해킹 3번문제 풀이과정
+                    </h>
+                </div>
+        </div>
+    </br></br></br></br></br></br></br></br></br>
+    </body>
+
+    <footer>
+        <hr style="margin-left: 13%; margin-right: 13%">
+        <p style="text-align: center">Copyrightⓒ Team G0328 All Rights Reserved.</p>
+    </footer>
+
+</html>
+
+{% endblock %}

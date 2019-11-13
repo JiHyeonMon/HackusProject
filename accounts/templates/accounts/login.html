@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+    <html>
+         {% load staticfiles %}
+            <head>
+                    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+            <style>
+                .content{
+                    margin-top: 8%;
+                    height: 5px;
+                    margin-left: 20%;
+                    margin-right: 20%;
+                    
+                }
+                .title{
+                    height: 25px;
+                    width: 355px;
+                    margin-left: 28%;
+                    margin-right: 28%;
+                    font-size: 25px;
+                    line-height: 30px;
+                    text-align: center;
+               }
+               .mainbox{
+                    margin-top: 5%;
+                    height: 100px;
+                    width: 355px;
+                    margin-left: 28%;
+                    margin-right: 28%;
+
+               }
+               .secbox{
+                    height: 104px;
+                    float:left;
+               }
+               .idbox{
+                    height: 48px;
+                    width: 210px;
+               }
+               .pwbox{
+                    margin-top: 5%;
+                    width: 210px;
+                    height: 48px;
+               }
+               .submit{
+                    height: 105px;
+                    width: 120px;
+                    margin-left: 3%;
+                    float:left;
+                    font-size: 15px;   
+               }
+               .line{
+                    margin-top: 3.5%;
+                    margin-left: 28%;
+                    margin-right: 28%;
+                    width: 355px;
+
+               } 
+               .botmain{
+                    display: table;
+                    height: 48px;
+                    width: 400px;
+                    margin-left: 28%;
+                    margin-right: 28%;
+                    float: left;
+
+               }
+               .bottom1{
+                    display: table-cell;
+                    margin-top: 3.5%;
+                    height: 50px;
+                    width: 107px;
+                    float: left;
+                    line-height: 51px;
+                    text-align: center;
+                    border-radius: 6px;
+               }
+               .bottom2{
+                    margin-top: 3.5%;
+                    margin-left: 3%;
+                    height: 50px;
+                    width: 107px;
+                    float: left;
+                    line-height: 51px;
+                    text-align: center;
+                    border-radius: 6px;
+               }
+               .bottom3{
+                    margin-top: 3.5%;
+                    margin-left: 3%;
+                    height: 50px;
+                    width: 107px;
+                    float: left;
+                    line-height: 51px;
+                    text-align: center;
+                    border-radius: 6px;
+               }
+               .bottom1:hover, .bottom2:hover, .bottom3:hover {
+                    color: gray;
+               }
+               .login:hover{
+                    color: white;
+               }
+              
+                
+        
+            </style>
+            </head>
+            <body scroll=auto style="overflow-x:hidden">
+                <form method = "POST" action = "{% url 'login' %}">
+                {% csrf_token %}
+                <div class="content">
+                    <div class="title" style="color: black"><b>로그인이 필요합니다.</b> </div>
+                    <div class="mainbox" >
+                        <div class="secbox" >
+                            <div class="idbox" style="border:1px solid white">
+                            <input name = "id" type = "text" style="height:48px;width:210px;font-size:15px;padding-left:5px;" placeholder="아이디" >
+                            </div>
+                             <div class="idbox" style="border:1px solid white">
+                             <input name = "password" type ="password" style="height:48px;width:210px;font-size:15px;padding-left:5px; margin-top:5%" placeholder="비밀번호" >
+                                </div>
+                            </div>
+                        <div class="submit">
+                        <button type = "submit" class="login" style="height:117px;width:125px;background-color: #f6b14f;font-size:18px;border-radius: 12px; margin-left: 5%">LOGIN</button>
+                        </div>
+                    </div>
+                    <div class="line" style="border-bottom:1px solid black;">
+                    </div>
+                    <div class="botmain">
+                         <a href="{% url 'home' %}"  style="text-decoration: none; color: black;">   
+                         <div class="bottom1" style="border: 1.5px solid #f6b14f;">아이디 찾기
+                    </div></a>
+                         <a href="{% url 'home' %}"  style="text-decoration: none; color: black;">
+                         <div class="bottom2" style="border: 1.5px solid #f6b14f;">비밀번호 찾기
+                    </div></a>
+                         <a href="{% url 'signup' %}"  style="text-decoration: none; color: black;">
+                         <div class="bottom3" style="border: 1.5px solid #f6b14f;">회원가입
+                    </div></a>
+                    </div>
+                </div>
+            </div>
+                </form>
+                </body>
+
+                <footer>
+                    <hr style="margin-top:30%; margin-left: 13%; margin-right: 13%">
+                    <p style="text-align: center">Copyrightⓒ Team G0328 All Rights Reserved.</p>
+                </footer>
+        
+        </html>
+        
+        {% endblock %}
+        <!--
+<h1>로그인</h1>
+
+<br>
+<br><br>
+<form method = "POST" action = "{% url 'login' %}">
+    {% csrf_token %}
+    ID : 
+    <br>
+    <input name = "id" type = "text">
+    <br>
+    PASSWORD :
+    <br>
+    <input name = "password" type ="password">
+    <br>
+    <input type = "submit" value="로그인" >
+</form>
+</html>
+-->

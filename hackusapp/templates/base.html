@@ -1,0 +1,102 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .html, body {
+            width: 100%;
+	        height: 100%;
+        }
+
+        .main {
+            width: 100%;
+	        height: 100%;
+        }
+        
+        .top{
+            background-color: #030303;
+	        position: relative;
+	        width: auto;
+            margin: 0;
+	        height: 180px;
+	        top: -10px;
+	        right: 0px;
+	        bottom: 0px;
+	        left: -8px;
+            text-align: right;
+        }
+        .top img{
+            display: block;
+            padding-left: 41%;
+            padding-right: 40%;
+            position:absolute;
+            top:10%;
+        
+        }
+        .middle{
+            position: absolute;
+            margin-left: 10%;
+	        width: 100%;
+	        height: 60px;
+	        top: 120px;
+	        right: 0px;
+	        bottom: 0px;
+	        left: 0px;
+            text-align: center;
+        }
+        .middle_blo{
+            display: block;
+            position: relative;
+            float: left;
+            width: 13%;
+            height: 40px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .info{
+            float: right;
+            margin-top: 2%;
+            margin-right: 3%;
+            font-size: 16px;
+        }
+        .middle_blo:hover{
+            color: #9fa0a0;
+        }
+    
+    </style>
+    </head>
+    <body scroll=auto style="overflow-x:hidden; " >
+        <div class="main"> 
+            </div>
+            <div class="top">            
+                <a href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}"></a>
+    
+                <!--로그인 한 상태일 때-->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" style="color:white; text-decoration: none">Logout</a>&nbsp;&nbsp;
+                    <a href="{% url 'signup' %}" style="color:white; text-decoration: none">SignUp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                {% else %}
+                    <a href="{% url 'login' %}" style="color:white; text-decoration: none">&nbsp;Login</a>&nbsp;&nbsp;
+                    <a href="{% url 'signup' %}" style="color:white; text-decoration: none">SignUp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                {% endif %}
+                
+            </div>
+        </div>
+            <div class="middle" style="line-height: 40px">
+                    <a href="{% url 'introduce' %}" style="color:white"><div class="middle_1 middle_blo" style="border-right:1px solid white"><b>Introduce</b></div></a>   
+                    <a href="{% url 'tutorial' %}" style="color:white"><div class="middle_2 middle_blo" style="border-right:1px solid white"><b>Tutorial</b></div></a>
+                    <a href="{% url 'challenge' %}" style="color:white"><div class="middle_3 middle_blo"style="border-right:1px solid white"><b>Challenge</b></div></a>
+                    <a href="{% url 'ctf' %}" style="color:white"><div class="middle_4 middle_blo"style="border-right:1px solid white"><b>CTF</b></div></a>
+                    <a href="{% url 'writeupboard' %}" style="color:white"><div class="middle_5 middle_blo"style="border-right:1px solid white"><b>Write-Up</b></div></a>
+                    <a href="{% url 'mypage' %}" style="color:white"><div class="middle_6 middle_blo"><b>MyPage</b></div></a>
+            </div>
+                {% block content %}
+
+                {% endblock %}
+        
+    </body>
+
+</html>
+
